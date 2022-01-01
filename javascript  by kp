@@ -203,3 +203,18 @@ midel name<input type="text" id="mn">
 <div id="data"></div>
 </body>
 </html>
+
+=======================================================
+=======================================================
+<?php
+$fname=$_GET['fname'];
+$lname=$_GET['lname'];
+echo $fname=$_GET['fname'];
+echo "<br>";
+echo $lname=$_GET['lname'];
+
+echo var_dump($fname);
+echo "<br>";
+echo gettype($fname);
+echo "<br>";
+echo gettype($lname);
