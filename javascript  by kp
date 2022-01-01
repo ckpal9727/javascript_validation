@@ -159,3 +159,47 @@
 
 </body>
 </html>
+
+
+
+
+====================================day2=======================================================
+====================================day2=======================================================
+
+<html>
+<head>
+<tital>form</tital>
+<script>
+
+function gokap()
+{
+var fname=document.getElementById('fn').value;
+var lname=document.getElementById('ln').value;
+var mname=document.getElementById('mn').value;
+var msg="welcome to ljku";
+alert(fname);
+alert(mname);
+alert(lname);
+alert(msg);
+
+var msg1;
+msg1=msg+' '+document.getElementById('fn').value+' '+document.getElementById('ln').value+' '+document.getElementById('mn').value;
+alert(msg1);
+document.getElementById("data").innerHTML=msg1;
+return false;
+}
+
+</script>
+
+</head>
+<body>
+<form onsubmit="return gokap()" >
+first name<input type="text" id="fn">
+last name <input type="text" id="ln">
+midel name<input type="text" id="mn">
+
+<input type="submit">
+</form>
+<div id="data"></div>
+</body>
+</html>
