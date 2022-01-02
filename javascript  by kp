@@ -1,292 +1,322 @@
 
-day 1
+----------------------program1-----------------
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<html>
-<head>
-<tital>form</tital>
-<style type='text/css'>
-	.box{
-		border:solid 3px red;
-	}
-</style>
-<script>
-	var fname;
-	var email;
-	var pass;
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	function validate()
-	{ 
-		fname=document.getElementById('fname').value;
-		email=document.getElementById('email').value;
-		pass=document.getElementById('password').value;
-		pass2=document.getElementById('password2').value;
-		
-		//this is for fmane//
-		if(fname.length<=0)
-		{
-			alert("please enter somthing");
-			return false;
-			
-		}
-		else
-		{
-			var regxp=/^[A-Za-z]+$/;
-			if(fname.match(regxp)==null)
-			{
-				alert("please enter valid fname");
-				return false;
-			}
-		}
-		//this is for email
-		if(email.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid email");
-				return false
-				
-			}
-		}
-		// this is for password
-		if(pass.length<=0)
-		{
-			alert("please enter somthing in password");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-		}	
-		// this is for re-password
-		if(pass2.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-			
-		}
-		if(pass==pass2)
-			{
-				alert("password same");
-			}
-		else
-		
-			{
-				alert("password not same");
-
-			}
-		
-		
-		return true;
-	}
-	
-	function submitform()
-	{
-	
-		if(validate()){
-		
-		alert("form sumited");
-		document.getElementById('data').innerHTML=fname;
-		document.getElementById('data2').innerHTML=email;
-		return false;
-		}
-	
-		else
-		{
-				alert("form not sumited");
-				return false;
-		}
-	}
-
-		
-</script>
-</head>
-<body>
-<div class="box" >
-<form onsubmit="return submitform()"  method="post" align="center">
-<table align="center">
-<tr>
-	<td>fname</td><td><input type="text" id="fname" name="name"></td>
-</tr>
-<tr>
-	<td>DOB</td><td><input type="date" id="dob" name="dob"></td>
-</tr>
-<tr>
-	<td>Gender</td><td>male<input type="radio" id="gender"  name="gen"> female<input type="radio" id="gender" name="gen"></td>
-</tr>
-<tr>
-	<td>hobby</td><td>codding<input type="checkbox" name="h[]">programing<input type="checkbox"></td><td>dancing<input type="checkbox" name="h[]">programing<input type="checkbox"></td>
-</tr>
-<tr>
-	<td>email</td><td><input type="text" id="email" name="email"></td>
-</tr>
-<tr>
-	<td>password</td><td><input type="password" id="password" name="password"></td>
-</tr>
-<tr>
-	<td>re-password</td><td><input type="password" id="password2" name="paword"></td>
-</tr>
-<tr>
-	<td><input type="submit" name="submit"></td>
-</tr>
-</table>
+    <title>calculater</title>
+  </head>
+       
 </form>
-<div>
+<?php
+    if(isset($_POST['submit']))
+    {
+        $num1=$_POST['num1'];
+        $num2=$_POST['num2'];
+        settype($num1,"integer");
+        settype($num2,"integer");
+        $op=$_POST['op'];
+        if($op=='+')
+        {
+            $ans=$num1+$num2;
+        }
+         elseif($op=='-')
+        {
+            $ans=$num1-$num2;
+        }
+         elseif($op=='*')
+        {
+            $ans=$num1*$num2;
+        }
+         elseif($op=='/')
+        {
+            $ans=$num1/$num2;
+        }
+         elseif($op=='%')
+        {
+            $ans=$num1%$num2;
+        }
+      
+        
 
-<div id="data"></div>
-<div id="data2"></div>
+    }
+?>
+  <body>
+      <form method="post" action="">
+               <div class="container d-flex justify-content-center bg-light">
+                   <table>
+                       <tr>
+                           <td>
+                               Number1
+                           </td>
+                           <td>
+                               <input type="text" class="form-control" name="num1">
+                           </td>
+                       </tr>
+                        <tr>
+                           <td>
+                               Number2
+                           </td>
+                           <td>
+                               <input type="text" class="form-control" name="num2">
+                           </td>
+                       </tr>
+                       <tr>
+                           <td>Operations</td>
+                           <td>
+                               <select  id="" name="op" class="form-control text-center">
+                                <option value="+"><b>+</b></option>
+                                <option value="-">-</option>
+                                <option value="*">*</option></option>
+                                <option value="/">/</option>
+                                <option value="%">%</option>
+                               </select>
+                           </td>
+                       </tr>
+                       <tr><td>answere</td>
+                           <td>
+                              <input type="text" class="form-control" value="<?php   if(isset($_POST['submit'])){echo $ans;} ?>">
+                           </td>
+                           
+                       </tr>
+                       <tr>
+                           <td><input type="submit" name="submit" class=" btn btn-primary form-control"></td></td>
+                       </tr>
+                   </table>
+
+               </div>        
+
+</form> 
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+------------------------------program2-----------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Assending Order</title>
+    <style type="text/css">
+        table {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" >
+
+        <table>
+            <tr>
+                <td>Number1</td>
+                <td><input type="text" id="num1" name="num1"></td>
+            </tr>
+            <tr>
+                <td>Number2</td>
+                <td><input type="text " id="num2" name="num2"></td>
+            </tr>
+            <tr>
+                <td>Number3</td>
+                <td><input type="text" id="num3" name="num3"></td>
+            </tr>
+        </table>
+        <div style="width: 200px; background-color: black;" class=" align-item-center"><input
+                class="btn btn-primary btn-sm" type="submit" name="submit">submit
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
 <?php
-	if(isset($_POST['submit']))
-	{
-		
-	}
+ if(isset($_POST['submit']))
+ { $num1=$_POST['num1'];
+     $num2=$_POST['num2']; 
+     $num3=$_POST['num3']; 
+
+     echo $num1."<br>";
+     echo $num2."<br>";
+     echo $num3."<br>"; 
+
+     echo gettype($num1);
+     settype($num1,"integer");
+     settype($num2,"integer");
+     settype($num3,"integer");
+     echo "<br>";
+     echo gettype($num1);
+
+     if($num1>$num2 && $num1>$num3)
+     {
+         if($num2>$num3)
+         {
+             echo"<br>".$num1." ".$num2." ".$num3;
+         }
+         else
+         {
+              echo"<br>".$num1." ".$num3." ".$num2;
+         }
+     }
+       if($num1<$num2 && $num2>$num3)
+     {
+         if($num1>$num3)
+         {
+             echo"<br>".$num2." ".$num1." ".$num3;
+         }
+         else
+         {
+              echo"<br>".$num2." ".$num3." ".$num1;
+         }
+     }  if($num3>$num2 && $num1<$num3)
+     {
+         if($num2>$num1)
+         {
+             echo"<br>".$num3." ".$num2." ".$num1;
+         }
+         else
+         {
+              echo"<br>".$num3." ".$num1." ".$num2;
+         }
+     }
+    } 
+    ?>
+
+</html>
+
+
+
+--------------------------program3-----------------
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Assending Order</title>
+    <style type="text/css">
+        table {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" >
+
+        <table>
+            <tr>
+                <td>C Language</td>
+                <td><input type="text" id="num1" name="c"></td>
+            </tr>
+            <tr>
+                <td>FOC</td>
+                <td><input type="text " id="num2" name="foc"></td>
+            </tr>
+            <tr>
+                <td>DM</td>
+                <td><input type="text" id="num3" name="dm"></td>
+            </tr>
+            <tr>
+                <td>RDBMS</td>
+                <td><input type="text" id="num3" name="rdbms"></td>
+            </tr>
+            <tr>
+                <td>PHP</td>
+                <td><input type="text" id="num3" name="php"></td>
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td><input type="text" id="num3" name="total" ></td>
+            </tr>
+        </table>
+        <div style="width: 200px; background-color: black;" class=" align-item-center"><input
+                class="btn btn-primary btn-sm" type="submit" name="submit">submit
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+<?php
+if(isset($_POST['submit']))
+{
+    $c=$_POST['c'];
+    $foc=$_POST['foc'];
+    $dm=$_POST['dm'];
+    $rdbms=$_POST['rdbms'];
+    $php=$_POST['php'];
+    settype($c,"integer");
+    settype($foc,"integer");
+    settype($dm,"integer");
+    settype($rdbms,"integer");
+    settype($php,"integer");
+
+    $total=$c+$foc+$dm+$rdbms+$php;
+    
+    $per=($total*100)/500;
+    echo "<br>Your total is ".$total;
+    echo "<br>Percentage is ".$per;
+    echo "<br> type of total is ".gettype($per);
+
+    if($per>60)
+    {
+        echo "<br> Your grade is <b>First division</b>";
+    }
+     elseif($per>45 && $per<59)
+    {
+        echo "<br> Your grade is <b>second division</b>";
+    }
+     elseif($per>33 && $per<44)
+    {
+        echo "<br> Your grade is <b>third division</b>";
+    }
+    else
+    {
+        echo "<br> Your grade is<b>fail</b>";
+    }
+echo "<br>total<input type='text' value=' $total'/>";
+
+    
+}
+
 ?>
-</html>
-
-
-----------------------------------
-
-
-
-
-
-
-day 2
-
-<html>
-	<head>
-		<title>full Name</title>
-		<script type="text/javascript">
-			var fn,ln,mn;
-			
-			function data()
-			{
-			fn=document.getElementById('fn').value;
-			ln=document.getElementById('ln').value;
-			mn=document.getElementById('mn').value;
-				/*alert(fn);
-				alert(ln);
-				alert(mn);*/
-			}
-			function getdata()
-			{
-				alert(" I am in");
-					var msg;
-					msg="Hii good morning";
-					msg+=' '+document.getElementById('fn').value+' '+document.getElementById('ln').value+' '+document.getElementById('mn').value;
-					document.getElementById('demo').innerHTML=msg;
-					return false;
-			}
-		</script>
-	</head>
-	<body>
-	
-		<H1>Displaying full name  </h1>
-		<form action="" method="" onsubmit="return getdata()">
-		FName:<input type="text" id="fn"><br>
-		LName:<input type="text" id="ln"><br>
-		MName:<input type="text" id="mn"><br>
-		<input type="submit" value="submit">
-		</form>
-	<div id="demo"></div>
-	</body>
-</html>
-
-
-
-----------------------day-2-------------------------------------------------
-swap program
-<html>
-	<head>
-		<title>settype</title>
-	</head>
-	<body>
-		<form action="" method="get">
-			Number1:<input type="text" name="num1">
-			Number2:<input type="text" name="num2">
-			
-		<input type="submit" value="submit" name="submit">
-		</form>
-	</body>
-	<?php
-	
-		if(isset($_GET['submit']))
-		{
-			$number1=$_GET['num1'];
-			$number2=$_GET['num2'];
-			echo $number1;
-			echo "<br>";
-			echo $number2;
-			echo "<br>";
-			$swap=$number1;
-			$number1=$number2;
-			$number2=$swap;
-			echo $number1;
-			echo "<br>";
-			echo $number2;
-		}
-				
-	?>
-
-</html>
---------------------------------------settype and gettype -----------------------
-
-<html>
-	<head>
-		<title>settype</title>
-	</head>
-	<body>
-		<form action="" method="post">
-			name:<input type="text" name="fname">
-			
-			lname:<input type="text" name="lname">
-			age:<input type="text" name="age">
-		<input type="submit" value="submit" name="submit">
-		</form>
-	</body>
-	<?php
-	
-		if(isset($_POST['submit']))
-		{
-			$fname=$_POST['fname'];
-			$lname=$_POST['lname'];
-			$age=$_POST['age'];
-			
-			settype($age,"integer");
-			
-			
-			echo var_dump($age);
-			echo var_dump($fname);
-			echo gettype($fname);
-			echo gettype($lname);
-			echo gettype($age);
-		}
-	?>
-
 </html>
