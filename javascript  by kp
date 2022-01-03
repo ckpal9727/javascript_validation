@@ -1,161 +1,72 @@
+p1=========================
+
+
 <html>
-<head>
-<tital>form</tital>
-<style type='text/css'>
-	.box{
-		border:solid 3px red;
-	}
-</style>
-<script>
-	var fname;
-	var email;
-	var pass;
-
-	function validate()
-	{ 
-		fname=document.getElementById('fname').value;
-		email=document.getElementById('email').value;
-		pass=document.getElementById('password').value;
-		pass2=document.getElementById('password2').value;
-		
-		//this is for fmane//
-		if(fname.length<=0)
-		{
-			alert("please enter somthing");
-			return false;
-			
-		}
-		else
-		{
-			var regxp=/^[A-Za-z]+$/;
-			if(fname.match(regxp)==null)
-			{
-				alert("please enter valid fname");
-				return false;
-			}
-		}
-		//this is for email
-		if(email.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid email");
-				return false
-				
-			}
-		}
-		// this is for password
-		if(pass.length<=0)
-		{
-			alert("please enter somthing in password");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-		}	
-		// this is for re-password
-		if(pass2.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-			
-		}
-		if(pass==pass2)
-			{
-				alert("password same");
-			}
-		else
-		
-			{
-				alert("password not same");
-
-			}
-		
-		
-		return true;
-	}
-	
-	function submitform()
-	{
-	
-		if(validate()){
-		
-		alert("form sumited");
-		document.getElementById('data').innerHTML=fname;
-		document.getElementById('data2').innerHTML=email;
-		return false;
-		}
-	
-		else
-		{
-				alert("form not sumited");
-				return false;
-		}
-	}
-
-		
-</script>
-</head>
 <body>
-<div class="box" >
-<form onsubmit="return submitform()"  method="post" align="center">
-<table align="center">
-<tr>
-	<td>fname</td><td><input type="text" id="fname"></td>
-</tr>
-<tr>
-	<td>DOB</td><td><input type="date" id="dob"></td>
-</tr>
-<tr>
-	<td>Gender</td><td>male<input type="radio" id="gender"> female<input type="radio" id="gender"></td>
-</tr>
-<tr>
-	<td>hobby</td><td>codding<input type="checkbox">programing<input type="checkbox"></td>
-</tr>
-<tr>
-	<td>email</td><td><input type="text" id="email"></td>
-</tr>
-<tr>
-	<td>password</td><td><input type="password" id="password"></td>
-</tr>
-<tr>
-	<td>re-password</td><td><input type="password" id="password2"></td>
-</tr>
-<tr>
-	<td><input type="submit"></td>
-</tr>
-</table>
-</form>
-<div>
+<head>
+</head>
+<?php
+$num1;
+$num2;
+$ans;
 
-<div id="data"></div>
-<div id="data2"></div>
+    if(isset($_POST['s']))
+    {
+        $num1=$_POST['num1'];
+        $num2=$_POST['num2'];
+     
+        $op=$_POST['op'];
+        if($op=='+')
+        {
+            $ans=$num1+$num2;
+        }
+         elseif($op=='-')
+        {
+            $ans=$num1-$num2;
+        }
+         elseif($op=='*')
+        {
+            $ans=$num1*$num2;
+        }
+         elseif($op=='/')
+        {
+            $ans=$num1/$num2;
+        }
+         elseif($op=='%')
+        {
+            $ans=$num1%$num2;
+        }
+      
+        
+
+    }
+	else{
+			$num1="";
+			$num2="";
+			$ans="";
+	}
+?>
+
+
+<h2>HTML Forms</h2>
+
+<form action="" method="post">
+  
+  number2:<input type="text" id="no1" name="num1" value="<?php echo $num1 ?>">><br>
+  <br>
+  number2:<input type="text" id="no2" name="num2" value="<?php echo $num2 ?>">><br>
+  <br>
+    <select  id="" name="op" >
+                                <option value="+"><b>+</b></option>
+                                <option value="-">-</option>
+                                <option value="*">*</option></option>
+                                <option value="/">/</option>
+                                <option value="%">%</option>
+                               </select>
+  <input type="submit" value="Submit" name="s">
+</form> 
+<br>
+ result:<input type="text" id="ans" name="ans" value="<?php echo $ans ?>"><br>
 
 </body>
 </html>
@@ -163,43 +74,176 @@
 
 
 
-====================================day2=======================================================
-====================================day2=======================================================
+p2=================================================
 
 <html>
-<head>
-<tital>form</tital>
-<script>
-
-function gokap()
-{
-var fname=document.getElementById('fn').value;
-var lname=document.getElementById('ln').value;
-var mname=document.getElementById('mn').value;
-var msg="welcome to ljku";
-alert(fname);
-alert(mname);
-alert(lname);
-alert(msg);
-
-var msg1;
-msg1=msg+' '+document.getElementById('fn').value+' '+document.getElementById('ln').value+' '+document.getElementById('mn').value;
-alert(msg1);
-document.getElementById("data").innerHTML=msg1;
-return false;
-}
-
-</script>
-
-</head>
 <body>
-<form onsubmit="return gokap()" >
-first name<input type="text" id="fn">
-last name <input type="text" id="ln">
-midel name<input type="text" id="mn">
+<head>
+<?php
 
-<input type="submit">
-</form>
-<div id="data"></div>
+
+    if(isset($_POST['s']))
+    {
+		if((isset($_POST['num1']))&& (isset($_POST['num2'])) && (isset($_POST['num3'])))
+		{
+        $num1=$_POST['num1'];
+        $num2=$_POST['num2'];
+		$num3=$_POST['num3'];
+		
+		if($num1==$num2 && $num1==$num3)
+		{
+			echo("all are same");
+		}
+		
+		if($num1<$num2 && $num1<$num3)
+		{
+			if($num2<$num3)
+			{
+		
+				echo $num1,$num2,$num3;
+				
+			}
+			else
+			{
+				echo $num1,$num3,$num2;
+			}
+		}
+		if($num2<$num1 && $num2<$num3)
+		{
+			if($num1<$num3)
+			{
+	
+				echo $num2,$num1,$num3;
+				
+			}
+			else
+			{
+				echo $num2,$num3,$num1;
+			}
+		}
+		if($num3<$num1 && $num3<$num2)
+		{
+			if($num1<$num2)
+			{
+				echo $num3,$num1,$num2;
+				
+			}
+			else
+			{
+				echo $num3,$num2,$num1;
+			}
+		}
+			
+		
+     }
+        
+	
+	}
+		else{
+			$num1="";
+			$num2="";
+			$num3="";
+		}
+?>
+</head>
+
+
+<h2>assendind mannare</h2>
+
+<form action="" method="post">
+  
+  number2:<input type="text" id="no1" name="num1" value="<?php echo $num1 ?>">><br>
+  <br>
+  number2:<input type="text" id="no2" name="num2" value="<?php echo $num2 ?>">><br>
+  <br>  
+  number3:<input type="text" id="no3" name="num3" value="<?php echo $num3 ?>">><br>
+  <br>
+
+  <input type="submit" value="Submit" name="s">
+</form> 
+
+
+
+</body>
+</html>
+
+===========================================p3==============================================
+
+<html>
+<body>
+<head>
+</head>
+<?php
+		$foc="";
+		$c="";
+		$dm="";
+		$rdbms="";
+		$php="";
+
+	if(isset($_POST['s']))
+	{
+		$foc=$_POST['foc'];
+		$c=$_POST['c'];
+		$dm=$_POST['dm'];
+		$rdbms=$_POST['rdbms'];
+		$php=$_POST['php'];
+		
+		echo "total:".($foc+$c+$dm+$rdbms+$php) ."<br>";
+		$total=$foc+$c+$dm+$rdbms+$php;
+		echo "percentage : ".(($foc+$c+$dm+$rdbms+$php)*100)/500 ."<br>";
+		$gred=(($foc+$c+$dm+$rdbms+$php)*100)/500;
+		
+		if($gred>60)
+        {
+            echo("first div");
+        }
+         elseif($gred>=45 && $gred<=59)
+        {
+            echo("secound div");
+        }
+         elseif($gred>=33 && $gred<=44)
+        {
+            echo("third div");
+        }
+         elseif($gred<33)
+        {
+             echo("fail");
+        }
+    		
+	}
+	else
+	{
+		$foc="";
+		$c="";
+		$dm="";
+		$rdbms="";
+		$php="";
+		
+	}
+
+?>
+
+
+
+<h2></h2>
+
+<form action="" method="post">
+  
+  C:<input type="text" id="no1" name="c" value="<?php echo $c; ?>"><br>
+  <br>
+  FOC:<input type="text" id="no2" name="foc" value="<?php echo $foc; ?>"><br>
+  <br> 
+  DM:<input type="text" id="no2" name="dm" value="<?php echo $dm; ?>"><br>
+  <br>
+  RDBMS:<input type="text" id="no2" name="rdbms" value="<?php echo $rdbms; ?>"><br>
+  <br> 
+  PHP:<input type="text" id="no2" name="php" value="<?php echo $php; ?>"><br>
+  <br>
+ 
+    
+  <input type="submit" value="Submit" name="s">
+</form> 
+
+
 </body>
 </html>
