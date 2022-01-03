@@ -15,37 +15,48 @@
        
 </form>
 <?php
+$ans="";
     if(isset($_POST['submit']))
     {
-        $num1=$_POST['num1'];
-        $num2=$_POST['num2'];
-        settype($num1,"integer");
-        settype($num2,"integer");
-        $op=$_POST['op'];
-        if($op=='+')
-        {
-            $ans=$num1+$num2;
-        }
-         elseif($op=='-')
-        {
-            $ans=$num1-$num2;
-        }
-         elseif($op=='*')
-        {
-            $ans=$num1*$num2;
-        }
-         elseif($op=='/')
-        {
-            $ans=$num1/$num2;
-        }
-         elseif($op=='%')
-        {
-            $ans=$num1%$num2;
-        }
-      
-        
+	if((isset($_POST['num1']))&&(isset($_POST['num2'])))
+	{
+			$num1=$_POST['num1'];
+			$num2=$_POST['num2'];
+			settype($num1,"integer");
+			settype($num2,"integer");
+			$op=$_POST['op'];
+		switch($op)
+		{
+			case "+":
+				$ans=$num1+$num2;
+				break;
+				
+			case "-":
+				$ans=$num1+$num2;
+				break;
+				
+			case "*":
+				$ans=$num1+$num2;
+				break;
+				
+			case "/":
+				$ans=$num1+$num2;
+				break;
+				
+			case "%":
+				$ans=$num1+$num2;
+				break;
+		}
+	}
+			
 
     }
+	else
+	{
+		$num1="";
+		$num2="";
+		
+	}
 ?>
   <body>
       <form method="post" action="">
@@ -56,7 +67,7 @@
                                Number1
                            </td>
                            <td>
-                               <input type="text" class="form-control" name="num1">
+                               <input type="text" class="form-control" value="<?php echo $num1?>" name="num1">
                            </td>
                        </tr>
                         <tr>
@@ -64,7 +75,7 @@
                                Number2
                            </td>
                            <td>
-                               <input type="text" class="form-control" name="num2">
+                               <input type="text" class="form-control" value="<?php echo $num2?>" name="num2">
                            </td>
                        </tr>
                        <tr>
@@ -72,16 +83,16 @@
                            <td>
                                <select  id="" name="op" class="form-control text-center">
                                 <option value="+"><b>+</b></option>
-                                <option value="-">-</option>
-                                <option value="*">*</option></option>
-                                <option value="/">/</option>
-                                <option value="%">%</option>
+                                <option value="-"><b>-</b></option>
+                                <option value="*"><b>*</b></option></option>
+                                <option value="/"><b>/</b></option>
+                                <option value="%"><b>%</b></option>
                                </select>
                            </td>
                        </tr>
                        <tr><td>answere</td>
                            <td>
-                              <input type="text" class="form-control" value="<?php   if(isset($_POST['submit'])){echo $ans;} ?>">
+                              <input type="text" class="form-control" value="<?php   echo $ans; ?>">
                            </td>
                            
                        </tr>
