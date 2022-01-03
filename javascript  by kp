@@ -1,5 +1,5 @@
 
-----------------------program1-----------------
+----------------------------------------------2-------------------------------------
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,97 +13,33 @@
     <title>calculater</title>
   </head>
        
-</form>
-<?php
-$ans="";
-    if(isset($_POST['submit']))
-    {
-	if((isset($_POST['num1']))&&(isset($_POST['num2'])))
-	{
-			$num1=$_POST['num1'];
-			$num2=$_POST['num2'];
-			settype($num1,"integer");
-			settype($num2,"integer");
-			$op=$_POST['op'];
-		switch($op)
-		{
-			case "+":
-				$ans=$num1+$num2;
-				break;
-				
-			case "-":
-				$ans=$num1+$num2;
-				break;
-				
-			case "*":
-				$ans=$num1+$num2;
-				break;
-				
-			case "/":
-				$ans=$num1+$num2;
-				break;
-				
-			case "%":
-				$ans=$num1+$num2;
-				break;
-		}
-	}
-			
 
-    }
-	else
+<?php
+	for($i=1;$i<=10;$i++)
 	{
-		$num1="";
-		$num2="";
-		
+		for($j=1;$j<=10;$j++)
+		{
+			echo $i*$j;
+		}
+		echo "<br>";
 	}
+	
+	
 ?>
   <body>
       <form method="post" action="">
-               <div class="container d-flex justify-content-center bg-light">
-                   <table>
-                       <tr>
-                           <td>
-                               Number1
-                           </td>
-                           <td>
-                               <input type="text" class="form-control" value="<?php echo $num1?>" name="num1">
-                           </td>
-                       </tr>
-                        <tr>
-                           <td>
-                               Number2
-                           </td>
-                           <td>
-                               <input type="text" class="form-control" value="<?php echo $num2?>" name="num2">
-                           </td>
-                       </tr>
-                       <tr>
-                           <td>Operations</td>
-                           <td>
-                               <select  id="" name="op" class="form-control text-center">
-                                <option value="+"><b>+</b></option>
-                                <option value="-"><b>-</b></option>
-                                <option value="*"><b>*</b></option></option>
-                                <option value="/"><b>/</b></option>
-                                <option value="%"><b>%</b></option>
-                               </select>
-                           </td>
-                       </tr>
-                       <tr><td>answere</td>
-                           <td>
-                              <input type="text" class="form-control" value="<?php   echo $ans; ?>">
-                           </td>
-                           
-                       </tr>
-                       <tr>
-                           <td><input type="submit" name="submit" class=" btn btn-primary form-control"></td></td>
-                       </tr>
-                   </table>
-
-               </div>        
-
-</form> 
+	  <table>
+		<tr>
+			<td>
+				
+				
+				
+			<td>
+		</tr>
+	  </table>
+              
+		</form>
+</body> 
   
 
     <!-- Optional JavaScript -->
@@ -112,222 +48,4 @@ $ans="";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-</html>
-
-
-
-------------------------------program2-----------
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Assending Order</title>
-    <style type="text/css">
-        table {
-            border: 1px solid black;
-        }
-    </style>
-</head>
-
-<body>
-    <form action="" method="post" >
-
-        <table>
-            <tr>
-                <td>Number1</td>
-                <td><input type="text" id="num1" name="num1"></td>
-            </tr>
-            <tr>
-                <td>Number2</td>
-                <td><input type="text " id="num2" name="num2"></td>
-            </tr>
-            <tr>
-                <td>Number3</td>
-                <td><input type="text" id="num3" name="num3"></td>
-            </tr>
-        </table>
-        <div style="width: 200px; background-color: black;" class=" align-item-center"><input
-                class="btn btn-primary btn-sm" type="submit" name="submit">submit
-        </div>
-    </form>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-</body>
-<?php
- if(isset($_POST['submit']))
- { $num1=$_POST['num1'];
-     $num2=$_POST['num2']; 
-     $num3=$_POST['num3']; 
-
-     echo $num1."<br>";
-     echo $num2."<br>";
-     echo $num3."<br>"; 
-
-     echo gettype($num1);
-     settype($num1,"integer");
-     settype($num2,"integer");
-     settype($num3,"integer");
-     echo "<br>";
-     echo gettype($num1);
-
-     if($num1>$num2 && $num1>$num3)
-     {
-         if($num2>$num3)
-         {
-             echo"<br>".$num1." ".$num2." ".$num3;
-         }
-         else
-         {
-              echo"<br>".$num1." ".$num3." ".$num2;
-         }
-     }
-       if($num1<$num2 && $num2>$num3)
-     {
-         if($num1>$num3)
-         {
-             echo"<br>".$num2." ".$num1." ".$num3;
-         }
-         else
-         {
-              echo"<br>".$num2." ".$num3." ".$num1;
-         }
-     }  if($num3>$num2 && $num1<$num3)
-     {
-         if($num2>$num1)
-         {
-             echo"<br>".$num3." ".$num2." ".$num1;
-         }
-         else
-         {
-              echo"<br>".$num3." ".$num1." ".$num2;
-         }
-     }
-    } 
-    ?>
-
-</html>
-
-
-
---------------------------program3-----------------
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Assending Order</title>
-    <style type="text/css">
-        table {
-            border: 1px solid black;
-        }
-    </style>
-</head>
-
-<body>
-    <form action="" method="post" >
-
-        <table>
-            <tr>
-                <td>C Language</td>
-                <td><input type="text" id="num1" name="c"></td>
-            </tr>
-            <tr>
-                <td>FOC</td>
-                <td><input type="text " id="num2" name="foc"></td>
-            </tr>
-            <tr>
-                <td>DM</td>
-                <td><input type="text" id="num3" name="dm"></td>
-            </tr>
-            <tr>
-                <td>RDBMS</td>
-                <td><input type="text" id="num3" name="rdbms"></td>
-            </tr>
-            <tr>
-                <td>PHP</td>
-                <td><input type="text" id="num3" name="php"></td>
-            </tr>
-            <tr>
-                <td>TOTAL</td>
-                <td><input type="text" id="num3" name="total" ></td>
-            </tr>
-        </table>
-        <div style="width: 200px; background-color: black;" class=" align-item-center"><input
-                class="btn btn-primary btn-sm" type="submit" name="submit">submit
-        </div>
-    </form>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-</body>
-<?php
-if(isset($_POST['submit']))
-{
-    $c=$_POST['c'];
-    $foc=$_POST['foc'];
-    $dm=$_POST['dm'];
-    $rdbms=$_POST['rdbms'];
-    $php=$_POST['php'];
-    settype($c,"integer");
-    settype($foc,"integer");
-    settype($dm,"integer");
-    settype($rdbms,"integer");
-    settype($php,"integer");
-
-    $total=$c+$foc+$dm+$rdbms+$php;
-    
-    $per=($total*100)/500;
-    echo "<br>Your total is ".$total;
-    echo "<br>Percentage is ".$per;
-    echo "<br> type of total is ".gettype($per);
-
-    if($per>60)
-    {
-        echo "<br> Your grade is <b>First division</b>";
-    }
-     elseif($per>45 && $per<59)
-    {
-        echo "<br> Your grade is <b>second division</b>";
-    }
-     elseif($per>33 && $per<44)
-    {
-        echo "<br> Your grade is <b>third division</b>";
-    }
-    else
-    {
-        echo "<br> Your grade is<b>fail</b>";
-    }
-echo "<br>total<input type='text' value=' $total'/>";
-
-    
-}
-
-?>
 </html>
