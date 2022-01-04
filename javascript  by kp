@@ -19,16 +19,23 @@
         }
         echo '<br>';
     }
+
+
+
+    $rev=array_reverse($stu);
+    echo '<br>';
+  
+ 
+ 
+    foreach($rev as $k)
+    {
+        foreach($k as $ke=>$v)
+        {
+            echo "     ".$v;
+        }
+        echo '<br>';
+    }
 ?>
-
-
-
-
-
-
-
-
-
 
 
 
