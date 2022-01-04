@@ -1,3 +1,40 @@
+
+-----------------------  optional(1)------------------
+
+<?php
+    $stu=array(
+        "ram"=>array("1","mca","ahmedabad"),
+        "shyam"=>array("2","bca","katch"),
+        "ghnshaym"=>array("3","mca-1","junagad"),
+        "ramraj"=>array("4","mca-2","rajkot"),
+        "karamrj"=>array("5","mca-3","surat"),
+        "anupraj"=>array("6","mca-4","ahmedabad")
+        
+    );
+    foreach($stu as $k)
+    {
+        foreach($k as $ke=>$v)
+        {
+            echo $ke."=>".$v;
+        }
+        echo '<br>';
+    }
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --------------------------------1-----------------------------
 
 
@@ -118,3 +155,50 @@
     }
     echo "</table>";
 ?>
+
+
+
+-----------------------------------------------------------4-----------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>select country</h1>
+    <form action="" method="get">
+        
+        <select name="option" onchange="this.form.submit()">
+        <option value="select">select</option>    
+        <option value="india">INDIA</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+        </select>
+        
+
+        <?php
+        if(isset($_GET['option']))
+        {
+            $cou=$_GET['option'];
+            $cou_array=array(
+                "india"=>array("Delhi","ahmedabd"),
+                "usa"=>array("washinton","newyork"),
+                "uk"=>array("london","ahmedabd")
+            );
+            echo '<select>';
+            foreach($cou_array[$cou] as $v)
+            
+            {
+                echo '<option>'.$v.'</option>';
+            }
+            echo '</select>';
+            
+        }
+
+        ?>
+</form>
+</body>
+</html>
