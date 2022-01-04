@@ -1,51 +1,120 @@
+--------------------------------1-----------------------------
 
-----------------------------------------------2-------------------------------------
+
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>calculater</title>
-  </head>
-       
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <div class="container d-flex justify-content-center">
+     <form action="" method="post">
+    <div>
+       Element1:
+      <input type="checkbox" name="n1[]" class="form-control" value="1">
+        Element2:
+      <input type="checkbox" name="n1[]" class="form-control" value="2">
+        Element3:
+      <input type="checkbox" name="n1[]" class="form-control" value="3">
+        Element4:
+      <input type="checkbox" name="n1[]" class="form-control" value="4">
+    </div>
+    <div><input type="submit" name="s" class="btn btn-primary form-contro"></div>
+</form>
+  </div>
 
 <?php
-	for($i=1;$i<=10;$i++)
-	{
-		for($j=1;$j<=10;$j++)
-		{
-			echo $i*$j;
-		}
-		echo "<br>";
-	}
-	
-	
-?>
-  <body>
-      <form method="post" action="">
-	  <table>
-		<tr>
-			<td>
-				
-				
-				
-			<td>
-		</tr>
-	  </table>
-              
-		</form>
-</body> 
-  
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  if(isset($_POST['s']))
+  {
+    if(isset($_POST['n1']))
+    {
+       $n2=array();
+      // array_push($n1,$n1=$_POST['n1']);
+      foreach($_POST['n1'] as $n1)
+      {
+        array_push($n2,$n1);
+      }
+      foreach($n2 as $n )
+      {
+        echo $n."<br>";
+      }
+     }
+    
+  }
+  else {
+    $n1="";
+  }
+?>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
+
+
+
+
+----------------------------------------------------------2---------------------------------
+
+
+<?php
+
+    echo "<table border=''>";
+    for($i=1;$i<=10;$i++)
+    {
+        echo "<tr>";
+        for($j=1;$j<=10;$j++)
+            {
+                    $ans=$i*$j;
+                echo "<td>$ans</td>";
+            }
+        echo "</tr>";
+    }
+    echo "</table>";
+?>
+
+
+
+-------------------------------------------------3--------------------------------------
+
+<?php
+
+    echo "<table border=''>";
+    for($i=1;$i<=10;$i++)
+    {
+        echo "<tr>";
+        for($j=1;$j<=10;$j++)
+            {
+                    $ans=$i+$j;
+                if($ans%2==0)
+                {
+                    echo "<td height=30px width=30px bgcolor=black></td>";
+                }
+                else
+                {
+                    echo "<td></td>"; 
+                }
+            }
+        echo "</tr>";
+    }
+    echo "</table>";
+?>
