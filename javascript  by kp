@@ -1,220 +1,87 @@
 <html>
-<head>
-<tital>form</tital>
-<style type='text/css'>
-	.box{
-		border:solid 3px red;
-	}
-</style>
-<script>
-	var fname;
-	var email;
-	var pass;
-
-	function validate()
-	{ 
-		fname=document.getElementById('fname').value;
-		email=document.getElementById('email').value;
-		pass=document.getElementById('password').value;
-		pass2=document.getElementById('password2').value;
-		
-		//this is for fmane//
-		if(fname.length<=0)
-		{
-			alert("please enter somthing");
-			return false;
-			
-		}
-		else
-		{
-			var regxp=/^[A-Za-z]+$/;
-			if(fname.match(regxp)==null)
-			{
-				alert("please enter valid fname");
-				return false;
-			}
-		}
-		//this is for email
-		if(email.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid email");
-				return false
-				
-			}
-		}
-		// this is for password
-		if(pass.length<=0)
-		{
-			alert("please enter somthing in password");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-		}	
-		// this is for re-password
-		if(pass2.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-			
-		}
-		if(pass==pass2)
-			{
-				alert("password same");
-			}
-		else
-		
-			{
-				alert("password not same");
-
-			}
-		
-		
-		return true;
-	}
-	
-	function submitform()
+<head><title></title>
+</head>
+<body>
+<?php
+$ans=null;
+	function odd($n)
 	{
 	
-		if(validate()){
-		
-		alert("form sumited");
-		document.getElementById('data').innerHTML=fname;
-		document.getElementById('data2').innerHTML=email;
-		return false;
+		if($n%2==0)
+		{
+			$ans="number is even";
 		}
-	
 		else
 		{
-				alert("form not sumited");
-				return false;
+			$ans="number is odd";
+		}
+		return $ans;
+	}
+	function posi($n)
+	{ 
+	//$ans=$_POST['ans'];
+		if($n>0)
+		{
+			$ans="number is positive";
+		}
+		else
+		{
+			$ans="number is negative";
+		}
+		return $ans;
+	}
+	function pri($n)
+	{
+		for($i=2;$i<=$n;$i++)
+		{
+			if($n%$i==0)
+			{
+				$flag=1;
+			}
+			else
+			{
+				$flag=0;
+			}
+			if($flag==1)
+			{
+				$ans="number is prime";
+			}
+			else
+			{
+				$ans="number is not prime";
+			}
+			return $ans;
 		}
 	}
-
-		
-</script>
-</head>
-<body>
-<div class="box" >
-<form onsubmit="return submitform()"  method="post" align="center">
-<table align="center">
-<tr>
-	<td>fname</td><td><input type="text" id="fname"></td>
-</tr>
-<tr>
-	<td>DOB</td><td><input type="date" id="dob"></td>
-</tr>
-<tr>
-	<td>Gender</td><td>male<input type="radio" id="gender"> female<input type="radio" id="gender"></td>
-</tr>
-<tr>
-	<td>hobby</td><td>codding<input type="checkbox">programing<input type="checkbox"></td>
-</tr>
-<tr>
-	<td>email</td><td><input type="text" id="email"></td>
-</tr>
-<tr>
-	<td>password</td><td><input type="password" id="password"></td>
-</tr>
-<tr>
-	<td>re-password</td><td><input type="password" id="password2"></td>
-</tr>
-<tr>
-	<td><input type="submit"></td>
-</tr>
-</table>
+if(isset($_POST['s']))
+	{
+			$n=$_POST['n'];
+			$c=$_POST['op'];
+			
+			switch($c)
+			{
+				case 'odd':
+				$ans=odd($n);
+				break;
+				
+				case 'pn':
+				$ans=posi($n);
+				break;
+				
+				case 'pri':
+				$ans=pri($n);
+				break;
+			}
+	}
+?>
+<form method="post">
+	Enter no:<input type="text" name="n"><br>
+	<input type="radio" value="odd" name="op">Odd or Even<br>
+	<input type="radio" value="pn" name="op">Possitive or Negative<br>
+	<input type="radio" value="pri" name="op">Prime or Composite<br>
+	<input type="radio" value="pali" name="op">Palindrom or Not<br>
+	<input type="submit" name="s" value="click"><br>
+	Ans:<input type="text" name="ans" value="<?php echo $ans?>">
 </form>
-<div>
-
-<div id="data"></div>
-<div id="data2"></div>
-
 </body>
 </html>
-
-
-
-
-====================================day2=======================================================
-====================================day2=======================================================
-
-<html>
-<head>
-<tital>form</tital>
-<script>
-
-function gokap()
-{
-var fname=document.getElementById('fn').value;
-var lname=document.getElementById('ln').value;
-var mname=document.getElementById('mn').value;
-var msg="welcome to ljku";
-alert(fname);
-alert(mname);
-alert(lname);
-alert(msg);
-
-var msg1;
-msg1=msg+' '+document.getElementById('fn').value+' '+document.getElementById('ln').value+' '+document.getElementById('mn').value;
-alert(msg1);
-document.getElementById("data").innerHTML=msg1;
-return false;
-}
-
-</script>
-
-</head>
-<body>
-<form onsubmit="return gokap()" >
-first name<input type="text" id="fn">
-last name <input type="text" id="ln">
-midel name<input type="text" id="mn">
-
-<input type="submit">
-</form>
-<div id="data"></div>
-</body>
-</html>
-
-=======================================================
-=======================================================
-<?php
-$fname=$_GET['fname'];
-$lname=$_GET['lname'];
-echo $fname=$_GET['fname'];
-echo "<br>";
-echo $lname=$_GET['lname'];
-
-echo var_dump($fname);
-echo "<br>";
-echo gettype($fname);
-echo "<br>";
-echo gettype($lname);
