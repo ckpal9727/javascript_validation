@@ -1,220 +1,113 @@
 <html>
 <head>
-<tital>form</tital>
-<style type='text/css'>
-	.box{
-		border:solid 3px red;
-	}
-</style>
-<script>
-	var fname;
-	var email;
-	var pass;
-
-	function validate()
-	{ 
-		fname=document.getElementById('fname').value;
-		email=document.getElementById('email').value;
-		pass=document.getElementById('password').value;
-		pass2=document.getElementById('password2').value;
-		
-		//this is for fmane//
-		if(fname.length<=0)
-		{
-			alert("please enter somthing");
-			return false;
-			
-		}
-		else
-		{
-			var regxp=/^[A-Za-z]+$/;
-			if(fname.match(regxp)==null)
-			{
-				alert("please enter valid fname");
-				return false;
-			}
-		}
-		//this is for email
-		if(email.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid email");
-				return false
-				
-			}
-		}
-		// this is for password
-		if(pass.length<=0)
-		{
-			alert("please enter somthing in password");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-		}	
-		// this is for re-password
-		if(pass2.length<=0)
-		{
-			alert("please enter somthing in email");
-			return false
-		}
-		
-		else
-		{
-			var regxp1=/[A-Za-z0-9]/;
-			if(email.match(regxp1)==null)
-			{
-				alert("please enter valid password");
-				return false
-				
-			}
-			
-		}
-		if(pass==pass2)
-			{
-				alert("password same");
-			}
-		else
-		
-			{
-				alert("password not same");
-
-			}
-		
-		
-		return true;
-	}
-	
-	function submitform()
-	{
-	
-		if(validate()){
-		
-		alert("form sumited");
-		document.getElementById('data').innerHTML=fname;
-		document.getElementById('data2').innerHTML=email;
-		return false;
-		}
-	
-		else
-		{
-				alert("form not sumited");
-				return false;
-		}
-	}
-
-		
-</script>
-</head>
-<body>
-<div class="box" >
-<form onsubmit="return submitform()"  method="post" align="center">
-<table align="center">
-<tr>
-	<td>fname</td><td><input type="text" id="fname"></td>
-</tr>
-<tr>
-	<td>DOB</td><td><input type="date" id="dob"></td>
-</tr>
-<tr>
-	<td>Gender</td><td>male<input type="radio" id="gender"> female<input type="radio" id="gender"></td>
-</tr>
-<tr>
-	<td>hobby</td><td>codding<input type="checkbox">programing<input type="checkbox"></td>
-</tr>
-<tr>
-	<td>email</td><td><input type="text" id="email"></td>
-</tr>
-<tr>
-	<td>password</td><td><input type="password" id="password"></td>
-</tr>
-<tr>
-	<td>re-password</td><td><input type="password" id="password2"></td>
-</tr>
-<tr>
-	<td><input type="submit"></td>
-</tr>
-</table>
-</form>
-<div>
-
-<div id="data"></div>
-<div id="data2"></div>
-
-</body>
-</html>
-
-
-
-
-====================================day2=======================================================
-====================================day2=======================================================
-
-<html>
-<head>
-<tital>form</tital>
-<script>
-
-function gokap()
-{
-var fname=document.getElementById('fn').value;
-var lname=document.getElementById('ln').value;
-var mname=document.getElementById('mn').value;
-var msg="welcome to ljku";
-alert(fname);
-alert(mname);
-alert(lname);
-alert(msg);
-
-var msg1;
-msg1=msg+' '+document.getElementById('fn').value+' '+document.getElementById('ln').value+' '+document.getElementById('mn').value;
-alert(msg1);
-document.getElementById("data").innerHTML=msg1;
-return false;
-}
-
-</script>
-
-</head>
-<body>
-<form onsubmit="return gokap()" >
-first name<input type="text" id="fn">
-last name <input type="text" id="ln">
-midel name<input type="text" id="mn">
-
-<input type="submit">
-</form>
-<div id="data"></div>
-</body>
-</html>
-
-=======================================================
-=======================================================
 <?php
-$fname=$_GET['fname'];
-$lname=$_GET['lname'];
-echo $fname=$_GET['fname'];
-echo "<br>";
-echo $lname=$_GET['lname'];
+	//=================================oddeven============================
+	function oddeven($n)
+	{
+		if($n%2==0){
+			return $a="number is even";
+		}
+		else{
+			return $a="number is odd";
+		}
+	}
+	//==================================positive===========================
+	function positive($n)
+	{
+		if($n<0){
+			return $a="number is nagetive";
+		}
+		else{
+			return $a="number is positive";
+		}
+	}
+	//======================================prime===========================
+	function prime($n)
+	{
+		$counter=0;
+		for($i=1;$i<=$n;$i++)
+		{
+			if($n%$i==0)
+			{
+				$counter++;
+			}
+			
+		}
+		if($counter==2)
+				{
+					return $a="number is prime";
+				}
+				else
+				{
+					return $a="number not is prime";
+				}
+	}
+//======================================palimdrom===========================
+	function palimdrom($n)
+	{
 
-echo var_dump($fname);
-echo "<br>";
-echo gettype($fname);
-echo "<br>";
-echo gettype($lname);
+		$rev=strrev($n);
+		if($rev==$n)
+		{
+			return $a=("number is palimdrom");
+		}
+		else{
+			return $a=("number is not plimdrom");
+		}
+	}
+
+
+
+	if(isset($_POST['s']))
+	{
+		$num=$_POST['num'];
+		$op=$_POST['op'];
+		$Ans="";
+	
+		switch($op)
+			{
+				case 'even':
+					$Ans=oddeven($num);
+					break;
+				case 'posi':
+					$Ans=positive($num);
+					break;
+
+				case 'prime':
+					$Ans=prime($num);
+					break;
+
+				case 'pali':
+					$Ans=palimdrom($num);
+					break;
+				
+			}
+
+	
+	}
+	else
+	{
+		$num="";
+		$op="";
+	}
+
+
+
+
+
+?>
+</head>
+<body>
+
+<form action="" method="post">
+enter no<input type="text" name="num" value="<?php echo $num  ?>"><br>
+<input type="radio" name="op" value="even"> Odd or Even<br>
+<input type="radio" name="op" value="posi"> Positive and Negative<br>
+<input type="radio" name="op" value="prime"> Prime and Composite<br>
+<input type="radio" name="op" value="pali"> Palindrome Or not<br>
+<input type="submit" value="click" name="s"><br>
+</form>
+
+Ans:<input type="text" name="ans" value="<?php echo $Ans  ?>"><br>
+</body>
+</html>
