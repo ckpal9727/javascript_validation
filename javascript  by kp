@@ -1,3 +1,74 @@
+-----------------------------1----------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<?php
+
+     function total($a,$b,$c)
+     {
+        $tire=200;
+        $oil=500;
+        $spark=1000;
+        $as=($tire*$a)+($oil*$b)+($spark*$c);
+        return $as;
+     }
+?>
+<?php
+    if(isset($_POST['s']))
+    {
+        
+        $tir=$_POST['tire'];
+        $oi=$_POST['oil'];
+        $spar=$_POST['spark'];
+        $ans=total($tir,$oi,$spar);
+    }
+    else{
+        $ans="";
+        $tir="";
+        $oi="";
+        $spar="";
+    }
+?>
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>Item</td>
+                <td>Quantity</td>
+            </tr>
+            <tr>
+                <td>Tires</td>
+                <td><input type="text" name="tire" value="<?php echo $tir ?>"></td>
+            </tr>
+            <tr>
+                <td>Oil</td>
+                <td><input type="text" name="oil" id="" value="<?php echo $oi ?>"></td>
+            </tr>
+            <tr>
+                <td>spark</td>
+                <td><input type="text" value="<?php echo $spar ?>" name="spark"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="click" name="s"></td>
+            </tr>
+            <tr>
+                <td>total amount</td>
+                <td><input type="text" value="<?php echo $ans ?>"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+
+----------------------------------------2-------------------------------
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,44 +81,190 @@
 
     <title>Hello, world!</title>
   </head>
-
   <?php
-  $quantity=0;
-  function $add_item($quantity)
+
+  if(isset($_POST['op']))
   {
-      
-      $quantity+=$quantity
-  }
-?>
- 
-  
-  <body>
+    function odd($n)
+    {
+        if($n%2==0)
+        {
+            return  $ans="the number is even";
+        }
+        else{
+            return $ans="the number is odd";
+        }
+    }   
+    function posi($n)
+   {
+       if($n>0)
+       {
+           echo $ans="the number is positive";
+       }
+       elseif($n==0)
+       {
+           echo $ans="number is 0";
+       }
+       else{
+           echo $ans="the number is negative";
+       }
+   } 
+   function prim($n)
+   {
+       for($i=2;$i<$n;$i++)
+       {
+           if($n%$i==0)
+           {
+               $flag=1;
+           }
+           else{
+               $flag=0;
+           }
+       }
+       if ($flag==0)
+       {
+           echo "The number is prime";
+       }
+       else{
+           echo "the numner is not prime";
+       }
+   }
+   function pali($n)
+   {
+       $rev=strrev($n);
+       if($rev==$n)
+       {
+           echo "the number is palindromw";
+       }
+       else
+       {
+           echo "the number is not palidrome";
+       }
+   }
+}
+else{
+    echo $ans="";
+}
+ ?>
+  <?php 
+  $ans="";
+  if(isset($_POST['s']))
+  {
+      $no=$_POST['n1'];
+      $a=$_POST['op'];
+
     
-      <div class="container d-flex justify-content-left">
-      <table>
-        <tr>
-          <td class="btn btn-light">Item</td>
-          <td class="btn btn-light">Quality</td>
-        </tr>
-         <tr>
-          <td class="btn btn-light">Tires</td>
-          <td class="btn btn-light"><input type="text" class="form-control"></td>
-        </tr> <tr>
-          <td class="btn btn-light">Oil</td>
-          <td class="btn btn-light"><input type="text" class="form-control"></td>
-        </tr> <tr>
-          <td class="btn btn-light">Spark Plug</td>
-          <td class="btn btn-light"><input type="text" class="form-control"></td>
-        </tr>
-        <tr>
-          <td class="btn btn-primary">submit</td>
-        </tr>
-      </table>
-    </div>
+        switch($a)
+        {
+            case "odd":
+                $an=odd($no);
+                break;
+            case "positive":
+              posi($no);
+                break;
+            case "prime";
+                prim($no);
+                break;
+            case "pali":
+                pali($no);
+                break;   
+        }  
+  }
+    
+  ?>
+  <body>
+      <form action="" method="post">
+    
+      <div class="container  justify-conten">
+        <h1 class="text-center">Enter number</h1>
+        <div><input type="text" class="form-control" name="n1" value="<?php echo $no ?>"></div>
+      <div>Odd number<input type="radio" name="op" value="odd"></div>
+      <div>Positive number<input type="radio" name="op" value="positive"></div>
+      <div>Prime or Composite<input type="radio" name="op" value="prime"></div>
+      <div>Palindrome or not<input type="radio" name="op" value="pali"></div>
+      <div><input type="submit" name="s" value="click" class=" btn btn-primary form-control"></div>
+      <div ><input type="text" class="form-control" value="<?php echo $an; ?>"></div>
+    </div></form>
 
   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+</html>
+
+
+
+------------------------------------------------3-------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<?php
+    function upper($in)
+    {
+        return strtoupper($in);
+    }
+    function lower($in)
+    {
+        return strtolower($in);
+    }
+    function right($n)
+    {
+        $str= substr($n,2);
+        return $str;
+     
+    }
+    function left($n)
+    {
+
+        $str= substr($n,3,strlen($n));
+        return $str;
+     
+    }
+    
+?>
+<?php 
+    if(isset($_POST['s']))
+    {
+        $n=$_POST['in'];
+         $ans=left($n);
+        switch($n)
+        {
+            case "upper":
+                $ans=upper($n);
+                break;
+            case "lower":
+                $ans=lower($n);
+                break;
+            case "right":
+                $ans=right($n);
+            case "left":
+                    $ans=right($n);
+        }
+       
+    }
+    else{
+        $ans="";
+    }
+?>
+<body>
+    <form method="post">
+        <div>
+            <h1>Enert The string</h1>
+           Enter String <input type="text "name="in">
+            Upper<input type="radio" name="op" id="" value="upper">
+            Lower<input type="radio" name="op" id="" value="lower">
+            right<input type="radio" name="op" id="" value="right">
+            left<input type="radio" name="op" id="" value="left">
+            <input type="submit" name="s">
+            output: <input type="text" value="<?php echo $ans; ?>">
+        </div>
+    </form>
+</body>
 </html>
