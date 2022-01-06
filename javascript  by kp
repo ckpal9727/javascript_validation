@@ -1,3 +1,19 @@
+-----------------------------connection-------------------------------------------
+
+<?php
+$con=mysqli_connect("localhost","root","","mca-1");
+
+if(mysqli_connect_errno($con))
+{
+	echo "failed".mysqli_connect_error($con);
+}
+else
+{
+	echo "succes";
+}
+?>
+
+
 -----------------------------------------1----------------------------------------
 
 <?php
