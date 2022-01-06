@@ -21,7 +21,7 @@ include('day_6.php');
 if(isset($_POST['s']))
 {
 	$n=$_POST['n'];
-	$e=$_POST['e'];
+	$e=$_POST['e'];-
 	$insert="insert into user_master (name,email) values('$n','$e'); ";
 	if(mysqli_query($con,$insert))
 	{
@@ -44,3 +44,39 @@ if(isset($_POST['s']))
 	</form>
 </body>
 </html>
+
+
+------------------------select---------------------------------
+	<HTML>
+	<BODY><form method="get">
+		<table border="1">
+			
+			<tr><td>id</td>
+			<td>name</td>
+			<td>email</td>
+			</tr>
+		
+		</table>
+	</form>
+	</BODY>
+	<?php
+			
+				include('day_6.php');	
+				
+				$select="select * from user_master";
+				 $result=mysqli_query($con,$select);
+				 echo "<table border='1'>";
+				 while($row=mysqli_fetch_array($result))
+				 {
+					echo '<tr><td>'.$row['id'] .'	</td><td>'.$row['name'] .'	</td><td>'.$row['email'] .'	</td ><td > update</td><td>delete</td></tr>';
+				 }
+				 echo "</table>";
+				 
+				 
+			
+			?>
+	</HTML>
+	
+	
+	
+	
