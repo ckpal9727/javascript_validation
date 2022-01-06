@@ -287,3 +287,119 @@ function password_generate($chars)
 
 ----------------------5-------------------
 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 program 5</title>
+</head>
+<?php
+function check_date($d,$m,$y)
+{
+//  echo "the date";
+    $in_date="$d-$m-$y";
+    $cur_date=date("d-m-Y");
+    // echo $cur_date;
+    // echo $in_date;          
+    if($cur_date==$in_date)
+    {
+        return $ans="u printed past date";
+    }
+    else {
+        return $ans="your date is not valid";
+    }
+//     if(date("Y")>=$y)
+//     {
+//         if(date("m")>=$m)
+//         {
+//             if(date("d")>=$d)
+//             {
+//                 return $ans="the date is past date from now";
+//             }
+//             else {
+//                 return $ans="date is bigger from now";
+//             }
+//         }
+//         else {
+//             return $ans="date is bigger from now";
+//         }
+//     }
+//     else {
+//         return $ans="date is bigger from now";
+//     }
+ }
+ ?>
+
+<body>
+    <form action="" method="post">
+    <div><center>
+        <h1 >Enter the date</h1>
+        <?php 
+
+        $cur_date=date("d-m-Y");
+        echo $cur_date."<br>";
+        $day=array();
+         for($i=1;$i<=31;$i++)
+        {
+            array_push($day,$i);
+        }
+        $month=array();
+           for($i=1;$i<=12;$i++)
+        {
+            array_push($month,$i);
+        }
+        $year=array();
+        for($i=1990;$i<=2022;$i++)
+        {
+            array_push($year,$i);
+        }
+
+           echo "<select name='op' ><option >day</option>";
+           foreach($day as $d)
+           {
+                echo "<option  value='$d'>$d</option>";
+           }
+           echo "</select>";
+              echo "<select name='op1'><option >month</option>";
+           foreach($month as $d)
+           {
+                echo "<option  value='$d'>$d</option>";
+           }
+           echo "</select>";
+            echo "<select name='op2' > <option >year</option>";
+           foreach($year as $d)
+           {
+                echo "<option  value='$d'>$d</option>";
+           }
+           echo "</select>";
+
+
+           if(isset($_POST['s']))
+           {
+                $c_day=$_POST['op'];
+                $c_month=$_POST['op1'];
+                $c_year=$_POST['op2'];
+                echo "<br>".$c_day."<br>";
+                echo $c_month."<br>";
+                echo $c_year."<br>";
+                $ans=check_date($c_day,$c_month,$c_year);
+           }
+           else
+           {
+               $ans="";
+           }
+        ?>
+        <input type="submit" value="Click" name="s">
+        <h3>OUTPUT</h3>
+        <input type="text" value="<?php echo $ans;?>">
+        </center>
+    </div>
+    
+    </form>
+</body>
+</html>
+
