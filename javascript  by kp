@@ -130,6 +130,25 @@ if(isset($_POST['s']))
 	}
 	
 ?>
+
+
+///
+<?php
+
+	include('connection.php');
+	$select="select * from images";
+	$data=mysqli_query($con,$select);
+	while($row=mysqli_fetch_array($data))
+	{
+		$id=$row['id'];
+		//echo $row['image'];
+		echo '<img height="240px" width="240px"src=data:image/jpg;base64,'.base64_encode($row['image']).'>';
+		echo '<a href="delete.php?id=$id">update</a>';
+	}
+	
+?>
+
+//
 	
 	
 	
