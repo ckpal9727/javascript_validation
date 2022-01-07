@@ -76,6 +76,40 @@ if(isset($_POST['s']))
 			
 			?>
 	</HTML>
+
+
+
+
+------------------------image upload----------------------------
+
+<?php
+if(isset($_POST['s']))
+{
+	$img=$_FILES['img']['tmp_name'];
+	$data=addslashes(file_get_content($img));
+	
+	$date=date('Y-m-d');
+	$insert="insert into images (image,created) values ('$data','$date');";
+	if(mysqli_query($con,$insert))
+	{
+		echo "okk";
+	
+	}
+	else
+	{
+		echo "not okk";
+	}
+}
+?>
+<html>
+<body>
+	<form method="post" enctype="multipart/form-data">
+	<input type="file" name="img">
+	<input type="submit" name="s" value="upload">
+	
+	</form>
+</body>
+</html>
 	
 	
 	
