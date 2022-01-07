@@ -83,10 +83,12 @@ if(isset($_POST['s']))
 ------------------------image upload----------------------------
 
 <?php
+
+include('connection.php');
 if(isset($_POST['s']))
 {
 	$img=$_FILES['img']['tmp_name'];
-	$data=addslashes(file_get_content($img));
+	$data=addslashes(file_get_contents($img));
 	
 	$date=date('Y-m-d');
 	$insert="insert into images (image,created) values ('$data','$date');";
