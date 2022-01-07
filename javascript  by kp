@@ -115,4 +115,21 @@ if(isset($_POST['s']))
 	
 	
 	
+-------------------------get image-------------------------
+
+<?php
+
+	include('connection.php');
+	$select="select * from images";
+	$data=mysqli_query($con,$select);
+	while($row=mysqli_fetch_array($data))
+	{
+		
+		//echo $row['image'];
+		echo '<img height="240px" width="240px"src=data:image/jpg;base64,'.base64_encode($row['image']).'>';
+	}
+	
+?>
+	
+	
 	
