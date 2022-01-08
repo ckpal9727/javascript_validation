@@ -149,6 +149,79 @@ if(isset($_POST['s']))
 ?>
 
 //
+
+----------------------------update image--------------------------
+
+<?php
+	$id=$_GET['id'];
+	include('connection.php');
+	$select="select * from images where id=$id";
+	//echo $id;
+	$data=mysqli_query($con,$select);
+	while($row=mysqli_fetch_array($data))
+	{
+		$img=$row['image'];
+		echo '<img height="100px" width="100px" src=data:image/jpg;base64,'.base64_encode($img).'>';
+	}
+	if(isset($_POST['s']))
+	{
+		$image=$_FILES['ima']['tmp_name'];
+		$convert=addslashes(file_get_contents($image));
+		$query="update images set image='$convert' where id='$id';";
+		// if(mysqli_query($con,$query))
+		// {
+		// echo "okk";
+		// }
+		// else {
+		// 	echo "no";
+		// }
+		$okk=mysqli_query($con,$query);
+		if($okk)
+		{
+			echo "hii";
+				header('Location:getimage.php');
+			
+		}
+	}
+
+	
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<form method="post" enctype="multipart/form-data">
+	<input type="file" name="ima" id="">
+	<input type="submit" value="update" name="s">
+</form>
+</body>
+</html>
+
+
+----------------------delete image-----------------
+
+<?php
+include('connection.php');
+ $id=$_GET['id'];
+
+            $query="delete from images where id='$id';";
+            $result =mysqli_query($con,$query);
+           if($result){
+
+		header('Location:getimage.php');
+	    }
+        else{
+		echo "<br>not delete";
+	}
+    
+
+
+?>
 	
 	
 	
