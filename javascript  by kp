@@ -1,227 +1,101 @@
------------------------------connection-------------------------------------------
+--------------------------------1----------------------------------
 
-<?php
-$con=mysqli_connect("localhost","root","","mca-1");
-
-if(mysqli_connect_errno($con))
-{
-	echo "failed".mysqli_connect_error($con);
-}
-else
-{
-	echo "succes";
-}
-?>
-
-
------------------------------------------1----------------------------------------
-
-<?php
-include('day_6.php');
-if(isset($_POST['s']))
-{
-	$n=$_POST['n'];
-	$e=$_POST['e'];-
-	$insert="insert into user_master (name,email) values('$n','$e'); ";
-	if(mysqli_query($con,$insert))
-	{
-		echo "succes fully inserted";
-		
-	}
-	else
-	{
-		echo "nothing";
-	}
-}
-?>
-<html>
-<body>
-	<form method="post">
-		name:<input type="text" name="n">
-		email:<input type="text" name="e">
-		<input type="submit" name="s">
-		
-	</form>
-</body>
-</html>
-
-
-------------------------select---------------------------------
-	<HTML>
-	<BODY><form method="get">
-		<table border="1">
-			
-			<tr><td>id</td>
-			<td>name</td>
-			<td>email</td>
-			</tr>
-		
-		</table>
-	</form>
-	</BODY>
-	<?php
-			
-				include('day_6.php');	
-				
-				$select="select * from user_master";
-				 $result=mysqli_query($con,$select);
-				 echo "<table border='1'>";
-				 while($row=mysqli_fetch_array($result))
-				 {
-					echo '<tr><td>'.$row['id'] .'	</td><td>'.$row['name'] .'	</td><td>'.$row['email'] .'	</td ><td > update</td><td>delete</td></tr>';
-				 }
-				 echo "</table>";
-				 
-				 
-			
-			?>
-	</HTML>
-
-
-
-
-------------------------image upload----------------------------
-
-<?php
-
-include('connection.php');
-if(isset($_POST['s']))
-{
-	$img=$_FILES['img']['tmp_name'];
-	$data=addslashes(file_get_contents($img));
-	
-	$date=date('Y-m-d');
-	$insert="insert into images (image,created) values ('$data','$date');";
-	if(mysqli_query($con,$insert))
-	{
-		echo "okk";
-	
-	}
-	else
-	{
-		echo "not okk";
-	}
-}
-?>
-<html>
-<body>
-	<form method="post" enctype="multipart/form-data">
-	<input type="file" name="img">
-	<input type="submit" name="s" value="upload">
-	
-	</form>
-</body>
-</html>
-	
-	
-	
--------------------------get image-------------------------
-
-<?php
-
-	include('connection.php');
-	$select="select * from images";
-	$data=mysqli_query($con,$select);
-	while($row=mysqli_fetch_array($data))
-	{
-		
-		//echo $row['image'];
-		echo '<img height="240px" width="240px"src=data:image/jpg;base64,'.base64_encode($row['image']).'>';
-	}
-	
-?>
-
-
-///
-<?php
-
-	include('connection.php');
-	$select="select * from images";
-	$data=mysqli_query($con,$select);
-	while($row=mysqli_fetch_array($data))
-	{
-		$id=$row['id'];
-		//echo $row['image'];
-		echo '<img height="240px" width="240px"src=data:image/jpg;base64,'.base64_encode($row['image']).'>';
-		echo '<a href="delete.php?id=$id">update</a>';
-	}
-	
-?>
-
-//
-
-----------------------------update image--------------------------
-
-<?php
-	$id=$_GET['id'];
-	include('connection.php');
-	$select="select * from images where id=$id";
-	//echo $id;
-	$data=mysqli_query($con,$select);
-	while($row=mysqli_fetch_array($data))
-	{
-		$img=$row['image'];
-		echo '<img height="100px" width="100px" src=data:image/jpg;base64,'.base64_encode($img).'>';
-	}
-	if(isset($_POST['s']))
-	{
-		$image=$_FILES['ima']['tmp_name'];
-		$convert=addslashes(file_get_contents($image));
-		$query="update images set image='$convert' where id='$id';";
-		// if(mysqli_query($con,$query))
-		// {
-		// echo "okk";
-		// }
-		// else {
-		// 	echo "no";
-		// }
-		$okk=mysqli_query($con,$query);
-		if($okk)
-		{
-			echo "hii";
-				header('Location:getimage.php');
-			
-		}
-	}
-
-	
-?>
-<!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-<body>
-	<form method="post" enctype="multipart/form-data">
-	<input type="file" name="ima" id="">
-	<input type="submit" value="update" name="s">
-</form>
+<body> 
+   
+  <form method="get" >
+
+    <select name="op" onchange="this.form.submit()">
+    <option>select</option>
+         <?php
+            include('connection.php');
+            $query="select * from country_master ";
+            $result=mysqli_query($con,$query);
+            while($row=mysqli_fetch_array($result))
+            {
+                $id=$row['c_id'];
+                $name=$row['c_name'];
+                echo $id." ".$name."<br>";
+            
+           
+        ?>
+      
+       <option value="<?php echo $id; ?>"><?php echo $name; ?></option>
+       <?php
+            }
+            ?>
+            </select>
+            <select name="op1" onchange="this.form.submit()" ><option>select</option>
+                
+                <?php
+                $id1=$_GET['op'];
+               
+                
+                    $query="select * from state_master  where c_id='$id1';";
+                    $result=mysqli_query($con,$query);
+                    while($row=mysqli_fetch_array($result))
+                    {     
+                ?>
+                <option value="<?php echo $row['s_id'];?>" ><?php echo $row['s_name'];?></option>
+                <?php
+                    }
+                    ?>
+            </select>
+          
+            <!-- <select name="op2" ><option>select</option>
+             -->
+                <?php
+                // include('connection.php');
+                if(isset($_GET['op1']))
+                
+            {
+                $city=$_GET['op1'];
+
+                $query="select * from city_master  where ct_id='$city';";
+                $result=mysqli_query($con,$query);
+              
+                  while($row=mysqli_fetch_array($result))
+                    {     
+                ?>
+                 <option value="" ><?php echo $row['ct_name'];?></option>
+                <?php
+                    }
+                    ?>
+             
+             <?php   
+            }
+            ?>
+
+                
+                 
+            <!-- </select> -->
+        
+    
+   
+        </form>
 </body>
 </html>
 
 
-----------------------delete image-----------------
 
+
+-------------------------------------------2--------------------------------------------
 <?php
 include('connection.php');
- $id=$_GET['id'];
-
-            $query="delete from images where id='$id';";
-            $result =mysqli_query($con,$query);
-           if($result){
-
-		header('Location:getimage.php');
-	    }
-        else{
-		echo "<br>not delete";
-	}
-    
-
-
+$select="select * from customer_master";
+$data1=mysqli_query($con,$select);
+$data="";
+while($row=mysqli_fetch_array($data1))
+{
+    $data.=$row['c_no'].'/t'.$row['c_name'].'/n';
+}
+header("Content-type:application/octet-stream");
+header("Content-Disposition:attachment;filename=report.xls");
+echo $data;
 ?>
-	
-	
-	
